@@ -121,9 +121,11 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
-# LOGIN_REDIRECT_URL = 'food:index'
+LOGIN_REDIRECT_URL = 'socialMedia:feed'
 
-# LOGIN_URL = 'login'
+LOGOUT_REDIRECT_URL = 'login'
+
+LOGIN_URL = 'login'
 
 MEDIA_ROOT = path.join(BASE_DIR, 'media')
 

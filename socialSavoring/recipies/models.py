@@ -1,4 +1,6 @@
+from django import forms
 from django.db import models
+from django.contrib import admin
 from profiles.models import Profile
 
 # Create your models here.
@@ -22,7 +24,7 @@ class Recipe(models.Model):
   
 
 class Ingredient(models.Model):
-  
+
   def __str__(self):
     return self.ingredient_name
 
@@ -31,3 +33,4 @@ class Ingredient(models.Model):
   ingredient_name = models.CharField(max_length=200)
   ingredient_quanitiy = models.FloatField()
   ingredient_measurement = models.CharField(max_length=200)
+  
