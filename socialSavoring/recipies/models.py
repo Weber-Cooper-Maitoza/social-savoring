@@ -1,6 +1,7 @@
 from django import forms
 from django.db import models
 from django.contrib import admin
+from datetime import datetime
 from profiles.models import Profile
 
 # Create your models here.
@@ -11,8 +12,8 @@ class Recipe(models.Model):
     return self.recipe_name
 
   creator = models.ForeignKey(Profile, on_delete=models.CASCADE)
-  
-  pub_date = models.DateField()
+  created_timestamp = models.DateTimeField(default=datetime.now, blank=True)
+  updated_timestamp = models.DateTimeField(default=datetime.now, blank=True)
   recipe_name = models.CharField(max_length=200)
   recipe_image = models.CharField(max_length=500, default="")
   oven_temp = models.IntegerField(null=True)
@@ -21,6 +22,7 @@ class Recipe(models.Model):
   recipe_tags = models.CharField(max_length=200)
   recipe_instructions = models.TextField()
   # recipe_nutrition = 
+  likes = models.IntegerField(default=0)
   
 
 class Ingredient(models.Model):

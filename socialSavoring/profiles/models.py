@@ -7,8 +7,7 @@ class Profile(models.Model):
   def __str__(self):
     return self.user.username
 
-  first_name = models.CharField(max_length=50)
-  last_name = models.CharField(max_length=50)
   user = models.OneToOneField(User, on_delete=models.CASCADE)
   avatar = models.ImageField(default='profilepic.jpg', upload_to='avatar_pictures')
+  follows = models.ManyToManyField("self", related_name="followed_by", symmetrical=False, blank=True)
   
