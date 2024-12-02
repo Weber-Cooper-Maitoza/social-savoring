@@ -7,3 +7,7 @@ from django.contrib.auth.decorators import login_required
 @login_required
 def feed(request):
   return render(request, 'socialMedia/feed.html')
+
+@login_required
+def categories(request):
+  return render(request, 'socialMedia/categories.html')

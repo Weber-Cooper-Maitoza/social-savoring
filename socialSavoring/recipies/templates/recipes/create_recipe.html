@@ -1,0 +1,46 @@
+{% extends 'socialMedia/baseNav.html' %}
+{% block body %}
+<div class="container">
+  <div class="row">
+    <h1 class="text-center py-3">Create A New Recipe</h1>
+    <div class="card">
+      <form method="POST">
+        {% csrf_token %}
+        <div class="form-group">
+          <label for="">Recipe Name</label>
+          <input type="text" class="form-control" id="recipe_name" name="recipe_name">
+        </div>
+        <!-- <div class="form-group">
+          <label for="form-group" class="form-label">Upload Image</label>
+          <input class="form-control" type="file" id="form-group" name="form-group" >
+        </div> -->
+        <div class="row justify-content-center">
+          <div class="col-md-2 form-group">
+            <label for="">Oven Temp</label>
+            <input type="number" class="form-control" id="oven_temp" name="oven_temp">
+          </div>
+          <div class="col-md-2 form-group">
+            <label for="">Serving Size</label>
+            <input type="number" step="0.01" class="form-control" id="serving_size" name="serving_size">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="">Category</label>
+          <input type="text" class="form-control" id="recipe_category" name="recipe_category">
+        </div>
+        <div class="form-group">
+          <label for="">Tags</label>
+          <input type="text" class="form-control" id="recipe_tags" name="recipe_tags">
+        </div>
+        <div class="form-group">
+          <label for="">Instructions</label>
+          <textarea class="form-control" id="recipe_instructions" name="recipe_instructions"></textarea>
+        </div>
+        <div class="py-2">
+          <button type="submit" class="btn btn-primary">Create Recipe</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -1,6 +1,9 @@
 {% extends 'socialMedia/baseNav.html' %}
 {% block body %}
+  <h1 class="text-center py-3">My Recipes</h1>
   {% for recipe in recipes %}
-    <p>{{ recipe.name }}</p>
+    <div class="row-6 justify-">
+      <h2>{{ recipe.recipe_name }}</h2>
+    </div>
   {% endfor %}
 {% endblock %}

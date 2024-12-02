@@ -28,13 +28,13 @@
             <a class="nav-link" href="{% url 'socialMedia:feed' %}">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="% url 'socialMedia:categories' %">Categories</a>
+            <a class="nav-link" href="{% url 'socialMedia:categories' %}">Categories</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="% url 'recipies:my_recipes' %">My Recipes</a>
+            <a class="nav-link" href="{% url 'recipies:my_recipes' user.pk %}">My Recipes</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="% url 'recipies:create' %">Create</a>
+            <a class="nav-link" href="{% url 'recipies:create' user.pk %}">Create</a>
           </li>
         </ul>
       </div>
@@ -51,8 +51,8 @@
           />
         </a>
         <div class="dropdown-menu pull-right">
-            <a class="dropdown-item" href="% url 'profiles:my_profile' %">My Profile</a>
-            <a class="dropdown-item" href="% url 'profiles:settings' %">Settings</a>
+            <a class="dropdown-item" href="{% url 'profiles:my_profile' user.pk %}">My Profile</a>
+            <a class="dropdown-item" href="{% url 'profiles:settings' user.pk %}">Settings</a>
             <hr class="dropdown-divider">
           <div class="text-center">
             <form method="post" action="{% url 'logout' %}">

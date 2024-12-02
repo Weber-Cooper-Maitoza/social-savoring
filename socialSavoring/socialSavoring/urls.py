@@ -29,7 +29,7 @@ urlpatterns = [
     path('logout/', LogoutView.as_view(next_page=settings.LOGOUT_REDIRECT_URL), name='logout'),
     path('social/', include("socialMedia.urls")),
     path('profile/', include("profiles.urls")),
-
+    path('recipies/', include("recipies.urls")),    
     path('admin/', admin.site.urls),
 ]
 urlpatterns += [] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
