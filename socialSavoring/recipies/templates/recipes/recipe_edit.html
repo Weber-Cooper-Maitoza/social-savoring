@@ -1,0 +1,63 @@
+{% extends 'socialMedia/baseNav.html' %}
+{% block body %}
+<div class="container m-5">
+  <div class="row">
+    <div class="col d-flex align-items-center">
+      <a class="btn btn-dark" href="{% url 'recipies:recipe_detail' recipe.id %}">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-bar-left" viewBox="0 0 16 16">
+          <path fill-rule="evenodd" d="M12.5 15a.5.5 0 0 1-.5-.5v-13a.5.5 0 0 1 1 0v13a.5.5 0 0 1-.5.5M10 8a.5.5 0 0 1-.5.5H3.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L3.707 7.5H9.5a.5.5 0 0 1 .5.5"/>
+        </svg>
+        Cancel
+      </a>
+    </div>
+    <div class="col">
+      <h1 class="text-center">Edit Recipe</h1>
+    </div>
+    <div class="col d-flex align-items-center justify-content-end">
+    </div>
+  </div>
+  <div class="row py-3">
+    <form method="POST">
+      {% csrf_token %}
+      <div class="form-group">
+        <label for="recipe_name">Recipe Name</label>
+        <input type="text" class="form-control" id="recipe_name" name="recipe_name" value="{{recipe.recipe_name}}">
+      </div>
+      <!-- <div class="form-group">
+        <label for="form-group" class="form-label">Upload Image</label>
+        <input class="form-control" type="file" id="form-group" name="form-group" >
+      </div> -->
+      <div class="row justify-content-center">
+        <div class="col-md-2 form-group">
+          <label for="oven_temp">Oven Temp</label>
+          <input type="number" class="form-control" id="oven_temp" name="oven_temp" value="{{recipe.oven_temp}}">
+        </div>
+        <div class="col-md-2 form-group">
+          <label for="serving_size">Serving Size</label>
+          <input type="number" step="0.01" class="form-control" id="serving_size" name="serving_size" value="{{recipe.serving_size}}">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="recipe_category">Category</label>
+        <input type="text" class="form-control" id="recipe_category" name="recipe_category" value="{{recipe.recipe_category}}">
+      </div>
+      <div class="form-group">
+        <label for="recipe_tags">Tags</label>
+        <input type="text" class="form-control" id="recipe_tags" name="recipe_tags" value="{{recipe.recipe_tags}}">
+      </div>
+      <div class="form-group">
+        <label for="recipe_instructions">Instructions</label>
+        <textarea class="form-control" id="recipe_instructions" name="recipe_instructions">{{recipe.recipe_instructions}}</textarea>
+      </div>
+      <div class="row d-flex py-2">
+        <div class="col">
+          <button type="submit" class="btn btn-primary">Save</button>
+        </div>
+        <div class="col d-flex justify-content-end">
+          <a class="btn btn-danger" href="{% url 'recipies:recipe_delete' recipe.id %}">Delete</a>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+{% endblock %}

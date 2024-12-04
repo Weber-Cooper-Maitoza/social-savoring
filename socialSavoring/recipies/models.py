@@ -15,7 +15,7 @@ class Recipe(models.Model):
   created_timestamp = models.DateTimeField(default=datetime.now, blank=True)
   updated_timestamp = models.DateTimeField(default=datetime.now, blank=True)
   recipe_name = models.CharField(max_length=200)
-  recipe_image = models.CharField(max_length=500, default="")
+  recipe_image = models.ImageField(upload_to='recipe_img', default="empty.jpg")
   oven_temp = models.IntegerField(null=True)
   serving_size = models.FloatField()
   recipe_category = models.CharField(max_length=50)
