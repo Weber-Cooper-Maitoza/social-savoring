@@ -24,23 +24,26 @@
       </div>
     </div>
     <div class="row">
-      <div class="row d-flex align-center">
-        <img src="{{ recipe.recipe_image.url }}" alt="add photo"> 
+      <div class="row d-flex justify-content-center p-3">
+        <img src="{{ recipe.recipe_image.url }}" style="max-width: 700px;" alt="{{ recipe.recipe_name }}"> 
       </div>
       <div class="row">
-        <p>Oven Temp: {{recipe.oven_temp}}&deg; F</p>
+
+        <div class="col">
+          <p>Oven Temp: {{recipe.oven_temp}}&deg; F</p>
+        </div>
+        <div class="col">
+            <p>Serving Size: {{recipe.serving_size}}</p>
+        </div>
+        <div class="col">
+          <p>Category: {{recipe.recipe_category}} </p>
+        </div>
+        <div class="col">
+          <p>Tags: {{recipe.recipe_tags}} </p>
+        </div>
       </div>
       <div class="row">
-          <p>Serving Size: {{recipe.serving_size}}</p>
-      </div>
-      <div class="row">
-        <p>Category: {{recipe.recipe_category}} </p>
-      </div>
-      <div class="row">
-        <p>Tags: {{recipe.recipe_tags}} </p>
-      </div>
-      <div class="row">
-        <h4>Instructions</h4>
+        <h4>Instructions:</h4>
         <p>{{recipe.recipe_instructions}} </p>
       </div>
       <p>Likes: {{recipe.likes}}</p>

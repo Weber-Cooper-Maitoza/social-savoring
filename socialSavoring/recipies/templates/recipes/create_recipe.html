@@ -4,16 +4,16 @@
   <div class="row">
     <h1 class="text-center py-3">Create A New Recipe</h1>
     <div class="card">
-      <form method="POST">
+      <form method="POST" enctype="multipart/form-data">
         {% csrf_token %}
         <div class="form-group">
           <label for="">Recipe Name</label>
           <input type="text" class="form-control" id="recipe_name" name="recipe_name">
         </div>
-        <!-- <div class="form-group">
-          <label for="form-group" class="form-label">Upload Image</label>
-          <input class="form-control" type="file" id="form-group" name="form-group" >
-        </div> -->
+        <div class="form-group">
+          <label for="recipe_image" class="form-label">Upload Image</label>
+          <input class="form-control" type="file" id="recipe_image" name="recipe_image" >
+        </div>
         <div class="row justify-content-center">
           <div class="col-md-2 form-group">
             <label for="">Oven Temp</label>
