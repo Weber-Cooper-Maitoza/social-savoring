@@ -3,6 +3,7 @@ from django.contrib import messages
 from .forms import RegistrationForm
 from django.contrib.auth.decorators import login_required
 from .models import Profile
+from django.contrib.auth.models import User
 
 # Create your views here.
 def register(request):
@@ -20,10 +21,10 @@ def register(request):
 
 @login_required
 def settings(request, id):
-  user = Profile.objects.get(pk=id)
-  return render(request, 'profiles/settings.html', {'user':user})
+  profile = Profile.objects.get(user=User.objects.get(id=id))
+  return render(request, 'profiles/settings.html', {'profile':profile})
 
 @login_required
 def my_profile(request, id):
-  user = Profile.objects.get(pk=id)
-  return render(request, 'profiles/my_profile.html', {'user':user})
+  profile = Profile.objects.get(user=User.objects.get(id=id))
+  return render(request, 'profiles/settings.html', {'profile':profile})

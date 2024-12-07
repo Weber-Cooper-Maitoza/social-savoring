@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from .models import Recipe, Ingredient
 from profiles.models import Profile
+from django.contrib.auth.models import User
 from datetime import datetime
 import os
 
@@ -9,7 +10,7 @@ import os
 
 @login_required
 def recipe_list_view(request, id):
-  user = Profile.objects.get(pk=id)
+  user = Profile.objects.get(user=User.objects.get(id=id))
   recipes = Recipe.objects.filter(creator=user)
   return render(request, 'recipes/my_recipes.html', {'recipes': recipes})
 
@@ -23,7 +24,7 @@ def recipe_detail_view(request, id):
 @login_required
 def recipe_create_view(request, id):
   if request.method == 'POST':
-    creator = Profile.objects.get(pk=id)
+    creator = Profile.objects.get(user=User.objects.get(id=id))
     created_timestamp = datetime.now()
     recipe_name = request.POST.get('recipe_name', '')
     recipe_image = request.FILES.get('recipe_image', 'empty.jpg')

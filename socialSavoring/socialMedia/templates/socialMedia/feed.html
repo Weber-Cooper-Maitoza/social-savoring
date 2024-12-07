@@ -1,4 +1,6 @@
 {% extends './baseNav.html' %}
 {% block body %}
-  <h1>this is feed page</h1>
+  {% for recipe in recipes %}
+    <p>{{recipe.recipe_name}}</p>
+  {% endfor %}
 {% endblock %}
