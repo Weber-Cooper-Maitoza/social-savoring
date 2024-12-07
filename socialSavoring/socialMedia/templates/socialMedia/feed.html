@@ -1,6 +1,45 @@
 {% extends './baseNav.html' %}
 {% block body %}
-  {% for recipe in recipes %}
-    <p>{{recipe.recipe_name}}</p>
+  <div class="col p-5">
+  {% for recipe in recipe_list %}
+    <div class="row p-5">
+      <div class="card">
+        <div class="col">
+          <h1 class="text-center">{{ recipe.recipe_name }}</h1>
+        </div>
+        <div class="row">
+          <div class="row d-flex justify-content-center p-3">
+            <img src="{{ recipe.recipe_image.url }}" style="max-width: 700px;" alt="{{ recipe.recipe_name }}"> 
+          </div>
+          <div class="row">
+            <div class="col">
+              <p>Oven Temp: {{recipe.oven_temp}}&deg; F</p>
+            </div>
+            <div class="col">
+                <p>Serving Size: {{recipe.serving_size}}</p>
+            </div>
+            <div class="col">
+              <p>Category: {{recipe.recipe_category}} </p>
+            </div>
+            <div class="col">
+              <p>Tags: {{recipe.recipe_tags}} </p>
+            </div>
+          </div>
+          <div class="row">
+            <h4>Instructions:</h4>
+            <p>{{recipe.recipe_instructions}} </p>
+          </div>
+          <div class="card-footer d-flex">
+            <div class="col">
+              <small class="text-muted">Likes: {{recipe.likes}}</small>
+            </div>
+            <div class="col">
+              <small class="text-muted">Creator: {{recipe.creator}}</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   {% endfor %}
+  </div>
 {% endblock %}

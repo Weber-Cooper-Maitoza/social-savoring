@@ -121,7 +121,7 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
-LOGIN_REDIRECT_URL = 'social/feed/' + ''
+LOGIN_REDIRECT_URL = 'social/feed/1'
 
 LOGOUT_REDIRECT_URL = 'login'
 

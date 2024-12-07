@@ -5,6 +5,7 @@ from recipies.models import Recipe, Ingredient
 from profiles.models import Profile
 from django.views.generic.list import ListView
 from django.contrib.auth.models import User
+from django.core.paginator import Paginator
 
 # Create your views here.
 
@@ -12,6 +13,9 @@ from django.contrib.auth.models import User
 def feed(request, id):
   profile = Profile.objects.get(user=User.objects.get(id=id))
   recipe_list = Recipe.objects.all()
+  paginator = Paginator(recipe_list, 3)
+  page = request.GET.get('page')
+  recipe_list = paginator.get_page(page)
   return render(request, 'socialMedia/feed.html', {"recipe_list": recipe_list, 'profile': profile})
 
 
