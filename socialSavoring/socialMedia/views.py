@@ -22,6 +22,13 @@ def feed(request, id):
 @login_required
 def categories(request, id):
   profile = Profile.objects.get(user=User.objects.get(id=id))
-  category = request.POST.get('category')
-  recipe_category_list = Recipe.objects.filter(recipe_category=category)
+  if request.method == 'POST':
+    category = request.POST.get('category_search', '')
+    print(category)
+    recipe_category_list = Recipe.objects.filter(recipe_category=category)
+    paginator = Paginator(recipe_category_list, 3)
+    page = request.GET.get('page')
+    recipe_category_list = paginator.get_page(page)
+  else:
+   recipe_category_list = None
   return render(request, 'socialMedia/categories.html', {'recipe_category_list': recipe_category_list, 'profile': profile})
