@@ -22,15 +22,11 @@
               </div>
               <div class="row">
                 <div class="row d-flex justify-content-center p-3">
-                  <img src="{{ recipe.recipe_image.url }}" style="max-width: 700px;" alt="{{ recipe.recipe_name }}"> 
+                  {% if recipe.recipe_image != "empty.jpg" %}
+                    <img src="{{ recipe.recipe_image.url }}" style="max-width: 700px;" alt="{{ recipe.recipe_name }}"> 
+                  {% endif %}
                 </div>
                 <div class="row">
-                  <div class="col">
-                    <p>Oven Temp: {{recipe.oven_temp}}&deg; F</p>
-                  </div>
-                  <div class="col">
-                      <p>Serving Size: {{recipe.serving_size}}</p>
-                  </div>
                   <div class="col">
                     <p>Category: {{recipe.recipe_category}} </p>
                   </div>
@@ -38,9 +34,8 @@
                     <p>Tags: {{recipe.recipe_tags}} </p>
                   </div>
                 </div>
-                <div class="row">
-                  <h4>Instructions:</h4>
-                  <p>{{recipe.recipe_instructions}} </p>
+                <div class="text-center pb-4">
+                  <a href="{% url 'socialMedia:recipe_detail' recipe.id %}" class="btn btn-primary">View Recipe</a>
                 </div>
                 <div class="card-footer d-flex">
                   <div class="col">

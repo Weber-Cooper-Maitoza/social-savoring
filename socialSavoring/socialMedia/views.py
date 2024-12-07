@@ -32,3 +32,10 @@ def categories(request, id):
   else:
    recipe_category_list = None
   return render(request, 'socialMedia/categories.html', {'recipe_category_list': recipe_category_list, 'profile': profile})
+
+@login_required
+def detail(request, id):
+  recipe = Recipe.objects.get(pk=id)
+  profile = recipe.creator
+  ingredient_list = Ingredient.objects.filter(recipe=recipe.id)
+  return render(request, 'socialMedia/detail.html', {'recipe': recipe, 'ingredient_list': ingredient_list, 'profile': profile})
