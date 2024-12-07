@@ -14,6 +14,25 @@
           <label for="recipe_image" class="form-label">Upload Image</label>
           <input class="form-control" type="file" id="recipe_image" name="recipe_image" >
         </div>
+        <div class="py-3">
+          <h3 class="text-center">Ingredients</h3>
+          <table class="table" id="ingredientTable">
+            <thead>
+              <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Quanitiy</th>
+                <th scope="col">Measurement</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- ingredient_name, ingredient_quanitiy, ingredient_measurement -->
+            </tbody>
+          </table>
+        </div>
+        <div class="text-center py-3">
+          <button class="btn btn-success" type="button" onclick="addIngredient()">Add Ingredient</button>
+          <button class="btn btn-danger" type="button" onclick="removeIngredient()">Remove Ingredient</button>
+        </div>
         <div class="row justify-content-center">
           <div class="col-md-2 form-group">
             <label for="">Oven Temp</label>
@@ -43,4 +62,23 @@
     </div>
   </div>
 </div>
+<script>
+  var count = 0;
+  function addIngredient() {
+    var table = document.getElementById("ingredientTable");
+    var row = table.insertRow(1);
+    var ingredient_name = row.insertCell(0);
+    var ingredient_quantitiy = row.insertCell(1);
+    var ingredient_measurement = row.insertCell(2);
+    ingredient_name.innerHTML = "<input type=\"text\" class=\"form-control\" id=\"ingredient_name_" + count.toString() + "\" name=\"ingredient_name_" + count.toString() + "\">";
+    ingredient_quantitiy.innerHTML = "<input type=\"number\" class=\"form-control\" id=\"ingredient_quantitiy_" + count.toString() + "\" name=\"ingredient_quantitiy_" + count.toString() + "\">";
+    ingredient_measurement.innerHTML = "<input type=\"number\" class=\"form-control\" id=\"ingredient_measurement_" + count.toString() + "\" name=\"ingredient_measurement_" + count.toString() + "\">";
+    count = count + 1;
+  }
+  
+  function removeIngredient() {
+    document.getElementById("ingredientTable").deleteRow(1);
+    count = count - 1;
+  }
+</script>
 {% endblock %}
