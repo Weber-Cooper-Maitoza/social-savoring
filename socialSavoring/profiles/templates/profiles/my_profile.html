@@ -1,4 +1,20 @@
 {% extends 'socialMedia/baseNav.html' %}
 {% block body %}
-  <h1>This is my profile page</h1>
+  <div class="container">
+    <div class="row">
+      <h1 class="text-center py-3">My Profile</h1>
+      <div class="col">
+        <form method="POST" enctype="multipart/form-data">
+          {% csrf_token %}
+          <div class="form-group">
+            <label for="avatar" class="form-label">Upload Avatar Image</label>
+            <input class="form-control" type="file" id="avatar" name="avatar" >
+          </div>
+          <div class="py-2">
+            <button type="submit" class="btn btn-primary">Update Profile</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
 {% endblock %}

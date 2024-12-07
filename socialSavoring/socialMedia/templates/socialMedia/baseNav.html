@@ -14,7 +14,7 @@
       <!-- Collapsible wrapper -->
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <!-- Navbar brand -->
-        <a class="navbar-brand mt-2 mt-lg-0" href="{% url 'socialMedia:feed' %}">
+        <a class="navbar-brand mt-2 mt-lg-0" href="{% url 'socialMedia:feed' user.pk %}">
           <img
           src="../../../media/cutlery.png"
           height="30"
@@ -25,10 +25,10 @@
         <!-- Links -->
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'socialMedia:feed' %}">Home</a>
+            <a class="nav-link" href="{% url 'socialMedia:feed' user.pk %}">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'socialMedia:categories' %}">Categories</a>
+            <a class="nav-link" href="{% url 'socialMedia:categories' user.pk %}">Categories</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="{% url 'recipies:my_recipes' user.pk %}">My Recipes</a>
@@ -43,7 +43,7 @@
       <div class="nav-item dropstart">
         <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">
           <img
-            src="../../../media/profilepic.jpg"
+            src="{{ profile.avatar.url }}"
             class="rounded-circle"
             height="30"
             alt="Black and White Portrait of a Man"
@@ -51,6 +51,7 @@
           />
         </a>
         <div class="dropdown-menu pull-right">
+            <p class="dropdown-item text-success">{{user.username}}</p>
             <a class="dropdown-item" href="{% url 'profiles:my_profile' user.pk %}">My Profile</a>
             <a class="dropdown-item" href="{% url 'profiles:settings' user.pk %}">Settings</a>
             <hr class="dropdown-divider">

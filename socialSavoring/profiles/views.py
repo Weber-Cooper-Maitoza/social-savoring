@@ -4,6 +4,7 @@ from .forms import RegistrationForm
 from django.contrib.auth.decorators import login_required
 from .models import Profile
 from django.contrib.auth.models import User
+import os
 
 # Create your views here.
 def register(request):
@@ -27,4 +28,10 @@ def settings(request, id):
 @login_required
 def my_profile(request, id):
   profile = Profile.objects.get(user=User.objects.get(id=id))
-  return render(request, 'profiles/settings.html', {'profile':profile})
+  if request.POST:
+    image_path = Profile.avatar.path
+    if os.path.exists(image_path):
+      print(image_path)
+      os.remove(image_path)
+    avatar = request.FILE.get('avatar', 'profilepic.jpg')
+  return render(request, 'profiles/my_profile.html', {'profile':profile})

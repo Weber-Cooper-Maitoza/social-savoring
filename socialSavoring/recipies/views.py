@@ -10,19 +10,21 @@ import os
 
 @login_required
 def recipe_list_view(request, id):
-  user = Profile.objects.get(user=User.objects.get(id=id))
-  recipes = Recipe.objects.filter(creator=user)
-  return render(request, 'recipes/my_recipes.html', {'recipes': recipes})
+  profile = Profile.objects.get(user=User.objects.get(id=id))
+  recipes = Recipe.objects.filter(creator=profile)
+  return render(request, 'recipes/my_recipes.html', {'recipes': recipes, 'profile': profile})
 
 
 @login_required
 def recipe_detail_view(request, id):
+  profile = Profile.objects.get(user=User.objects.get(id=id))
   recipe = Recipe.objects.get(pk=id)
-  return render(request, 'recipes/recipe_detail.html', {'recipe': recipe})
+  return render(request, 'recipes/recipe_detail.html', {'recipe': recipe, 'profile': profile})
 
 
 @login_required
 def recipe_create_view(request, id):
+  profile = Profile.objects.get(user=User.objects.get(id=id))
   if request.method == 'POST':
     creator = Profile.objects.get(user=User.objects.get(id=id))
     created_timestamp = datetime.now()
@@ -36,11 +38,12 @@ def recipe_create_view(request, id):
     recipe = Recipe(creator=creator, created_timestamp=created_timestamp, recipe_name=recipe_name, recipe_image=recipe_image, oven_temp=oven_temp, serving_size=serving_size, recipe_category=recipe_category, recipe_tags=recipe_tags, recipe_instructions=recipe_instructions)
     recipe.save()
     return redirect("recipies:my_recipes", id=id)
-  return render(request, 'recipes/create_recipe.html')
+  return render(request, 'recipes/create_recipe.html', {'profile': profile})
 
 
 @login_required
 def recipe_update_view(request, id):
+  profile = Profile.objects.get(user=User.objects.get(id=id))
   recipe = Recipe.objects.get(pk=id)
   user_id = recipe.creator.id
   if request.method == 'POST':
@@ -61,17 +64,17 @@ def recipe_update_view(request, id):
     newRecipe.save()
     recipe.delete()
     return redirect("recipies:my_recipes", id=user_id)
-  return render(request, 'recipes/recipe_edit.html', {'recipe': recipe})
+  return render(request, 'recipes/recipe_edit.html', {'recipe': recipe, 'profile': profile})
 
 
 @login_required
 def recipe_delete_view(request, id):
+  profile = Profile.objects.get(user=User.objects.get(id=id))
   recipe = Recipe.objects.get(pk=id)
-
   if request.method == 'POST':
     recipe.delete()
     image_path = recipe.recipe_image.path
     if os.path.exists(image_path):
         os.remove(image_path)
     return redirect("recipies:my_recipes", id=recipe.creator.id)
-  return render(request, 'recipes/recipe_delete.html', {'recipe': recipe})
+  return render(request, 'recipes/recipe_delete.html', {'recipe': recipe, 'profile': profile})

@@ -16,9 +16,6 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from recipies import views as recipie_views
-from profiles import views as profile_views
-from socialMedia import views as socialMedia_views
 from django.contrib.auth import views as authentication_views
 from django.contrib.auth.views import LogoutView
 from django.conf.urls.static import static
