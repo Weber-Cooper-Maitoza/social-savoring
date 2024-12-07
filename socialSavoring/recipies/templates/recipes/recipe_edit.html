@@ -30,6 +30,52 @@
         <label for="recipe_image" class="form-label">Upload Image</label>
         <input class="form-control" type="file" id="recipe_image" name="recipe_image" >
       </div>
+      <!-- ingredients -->
+      <div class="py-3">
+        <h3 class="text-center">Ingredients</h3>
+        <table class="table" id="ingredientTable">
+          <thead>
+            <tr>
+              <th scope="col">Name</th>
+              <th scope="col">Quanitiy</th>
+              <th scope="col">Measurement</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for ingredient in ingredient_list %}
+              <tr>
+                <td>
+                  <input 
+                    type="text" 
+                    class="form-control" 
+                    id="ingredient_name_" 
+                    name="ingredient_name_" 
+                    value="{{ingredient.ingredient_name}}"
+                  >
+                </td>
+                <td>
+                  <input 
+                    type="number" 
+                    class="form-control" 
+                    id="ingredient_quantitiy_" 
+                    name="ingredient_quantitiy_" 
+                    value="{{ingredient.ingredient_quanitiy}}"
+                  >
+                </td>
+                <td>
+                  <input 
+                    type="text" 
+                    class="form-control" 
+                    id="ingredient_measurement_" 
+                    name="ingredient_measurement_" 
+                    value="{{ingredient.ingredient_measurement}}"
+                  >
+                </td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
       <div class="row justify-content-center">
         <div class="col-md-2 form-group">
           <label for="oven_temp">Oven Temp</label>

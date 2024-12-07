@@ -25,10 +25,28 @@
     </div>
     <div class="row">
       <div class="row d-flex justify-content-center p-3">
+        {% if recipe.recipe_image != "empty.jpg" %}
         <img src="{{ recipe.recipe_image.url }}" style="max-width: 700px;" alt="{{ recipe.recipe_name }}"> 
+        {% endif %}
       </div>
-      <div class="row">
 
+      <!-- ingredients  -->
+      <p class="h3">Ingredients:</p>
+      <hr>
+      <div class="row pb-3">
+        <div class="col-6">
+          <div class="list-group">
+            {% for ingredient in ingredient_list %}
+              <label class="list-group-item">
+                <input class="form-check-input me-1" type="checkbox" value="">
+                {{ingredient.ingredient_name}} {{ingredient.ingredient_quanitiy}} {{ingredient.ingredient_measurement}} 
+              </label>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
         <div class="col">
           <p>Oven Temp: {{recipe.oven_temp}}&deg; F</p>
         </div>
@@ -43,7 +61,8 @@
         </div>
       </div>
       <div class="row">
-        <h4>Instructions:</h4>
+        <p class="h3">Instructions:</p>
+        <hr>
         <p>{{recipe.recipe_instructions}} </p>
       </div>
       <p>Likes: {{recipe.likes}}</p>
