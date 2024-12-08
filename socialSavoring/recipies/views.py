@@ -80,8 +80,8 @@ def recipe_update_view(request, id):
 
 @login_required
 def recipe_delete_view(request, id):
-  profile = Profile.objects.get(user=User.objects.get(id=id))
   recipe = Recipe.objects.get(pk=id)
+  profile = recipe.creator
   if request.method == 'POST':
     recipe.delete()
     image_path = recipe.recipe_image.path

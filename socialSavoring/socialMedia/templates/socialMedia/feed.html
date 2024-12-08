@@ -1,35 +1,34 @@
 {% extends './baseNav.html' %}
 {% block body %}
-  <div class="col p-5">
+  <div class="m-5 row row-cols-3 justify-content-center">
   {% for recipe in recipe_list %}
-    <div class="row mx-5 py-3">
-      <div class="card">
-        <div class="col">
-          <h1 class="text-center">{{ recipe.recipe_name }}</h1>
-        </div>
-        <div class="row">
-          <div class="row d-flex justify-content-center p-3">
-            {% if recipe.recipe_image != "empty.jpg" %}
-              <img src="{{ recipe.recipe_image.url }}" style="max-width: 700px;" alt="{{ recipe.recipe_name }}"> 
-            {% endif %}
-          </div>
-          <div class="row">
-            <div class="col">
-              <p>Category: {{recipe.recipe_category}} </p>
-            </div>
-            <div class="col">
-              <p>Tags: {{recipe.recipe_tags}} </p>
-            </div>
-          </div>
-          <div class="text-center pb-4">
+    <div class="row">
+      <div class="col">
+        <div class="card text-center" >
+          {% if recipe.recipe_image != "empty.jpg" %}
+            <img src="{{ recipe.recipe_image.url }}" style=" overflow: hidden;" class="card-img-top" alt="...">
+          {% endif %}
+          <div class="card-body">
+            <h5 class="card-title">{{ recipe.recipe_name }}</h5>
+            <h6 class="card-subtitle mb-2 text-muted">{{ recipe.recipe_category }}</h6>
             <a href="{% url 'socialMedia:recipe_detail' recipe.id %}" class="btn btn-primary">View Recipe</a>
           </div>
-          <div class="card-footer d-flex">
+          <div class="card-footer text-muted d-flex">
             <div class="col">
-              <small class="text-muted">Likes: {{recipe.likes}}</small>
+              <!-- Likes: {{ recipe.likes}} -->
+              <button type="button" class="btn btn-secondary position-relative">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
+                  <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143q.09.083.176.171a3 3 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15"/>
+                </svg>
+                {% if recipe.likes != 0 %}
+                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                    {{recipe.likes}}
+                </span>
+                {% endif %}
+              </button>
             </div>
             <div class="col">
-              <small class="text-muted">Creator: {{recipe.creator}}</small>
+              Comments: 5
             </div>
           </div>
         </div>
