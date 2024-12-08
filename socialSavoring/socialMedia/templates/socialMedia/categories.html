@@ -12,10 +12,9 @@
       </div>
     </form>
     {% if recipe_category_list %}
-      <div class="m-5 row row-cols-3">
+    <div class="m-5 row row-cols-3 justify-content-center">
+      {% for recipe in recipe_category_list %}
         <div class="row">
-        {% for recipe in recipe_category_list %}
-          <div class="row">
             <div class="col">
               <div class="card text-center" >
                 {% if recipe.recipe_image != "empty.jpg" %}
@@ -47,8 +46,7 @@
               </div>
             </div>
           </div>
-        {% endfor %}
-        </div>
+          {% endfor %}
       </div>
       <footer class="d-flex justify-content-center">
         <nav aria-label="Page navigation example">
