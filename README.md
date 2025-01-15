@@ -1,7 +1,7 @@
 # Social Savoring
 ---
 ## Overview: 
-This Django web app is a fully functional recipe creation and social media platform where users can create and share recipes, upload videos/photos, and post their culinary creations online. Other users can explore these posts, rate recipes, leave comments, and even suggest amendments to improve or customize the recipe (similar to a pull request).
+This Django web app is a recipe creation and social media platform where users can create and share recipes, upload videos/photos, and post their culinary creations online. Other users can explore these posts, rate recipes, leave comments, and even suggest amendments to improve or customize the recipe (similar to a pull request).
 
 ## Feed Page:
 The home page of the website which includes featured posts from other users and posts from followed users.
