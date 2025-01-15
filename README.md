@@ -1,31 +1,40 @@
 # Social Savoring
 ---
 ## Overview: 
-In this Django web app, I plan on making a recipe creation social media website where users can create recipes, upload videos/photos, and post their creations online. Other users can see these posts, rate the recipe, add comments, and submit an amendment to fix or enhance the recipe (think a pull request). Users can also branch off a recipe to create a more specific recipe with changes (think fork in git). There will be tags so users creating recipes can add tags which will allow other users to filter all recipes by that tag. Some tags include “vegan”, “gluten free”, “keto”, “kosher”, “vegetarian”, “lent”, “Christmas”, “thanksgiving”, “Hanukah”, etc. I also plan on adding specific categories that users creating recipes an pick so that other users searching can filter. Categories like “breakfast”, “lunch”, “dessert”, “dinner”, “snacks”, “healthy”.  I would also like to add an option for users who are creating recipes to include serving sizes and nutritional facts. I plan on adding a feature where the user creating a recipe can have an option to 1, add all the nutritional facts themselves or 2, search for the ingredient by the brand name and type to have all the nutritional facts be entered that way. I would also like to add an option to download the recipe PDF which will be generated on the fly.  There will be five nav pages: Home, Categories, Search, Create, Profile. More details on each in Details section.
+This Django web app is a fully functional recipe creation and social media platform where users can create and share recipes, upload videos/photos, and post their culinary creations online. Other users can explore these posts, rate recipes, leave comments, and even suggest amendments to improve or customize the recipe (similar to a pull request).
 
-## Details:
-- Nav
-  - Home: The home page of the website which includes featured posts from other users and posts from followed users.
-    - Following section: (left of the home page) lists out all of the profiles you are following. (can hide)
-    - Featured section: This section is displayed in the center which shows all the current trending recipes and all the newly created recipes from users that are being followed. (displayed as following: Recipe title, recipe image/short video, and (likes count and number of comments))
-  - Categories: This page lets the user filter all recipes based on two fields of categories. 
-    - Categories: These parameters are things like “breakfast”, “lunch”, “dinner”, “snacks”, “dessert”, “healthy”
-    - Tags: These are specifics about the recipe that can be searched for. (“vegan”, “gluten free”, “keto”, “kosher”, “vegetarian”, “lent”, “Christmas”, “thanksgiving”, “Hanukah”, etc.)
-  - Search: (search bar in nav) Lets the user search specifically for a recipe by recipe title.
-  - Create: This page lets the user create a new recipe. The parameters to create a new recipe are as follows:
-    - Recipe Title: The name of the recipe. (text)
-    - Recipe Image upload: (plans for adding short video format) (image)
-    - Optional oven temp setting: This will be a radial button saying, “Include oven temp and preheat?”. If user clicks on yes, a text box appears with the option to add oven temp.
-    - Serving size: How many servings the recipe makes.
-    - Category options.
-    - Tag options.
-    - Ingredient list: List of ingredients for recipe.
-      - Name of ingredient (text)
-      - Quantity of ingredient (number)
-      - Measurement of ingredient (text)
-    - Recipe instructions: The step-by-step instructions on how to make the recipe. (text)
-    - Nutritional values calculator: (plan to add an automatic calculator based on ingredients added.)
-  - Profile: (indicated by profile picture) once clicked on, a side bar shows and lists the options.
-    - My profile: This page lets you edit your profile like profile information like avatar photo, email, and passwords. 
-    - My recipes: This page lets you edit your recipes and show all of them.
-    - Following: This page lets you edit who you are following and lists all of them.
+## Feed Page:
+The home page of the website which includes featured posts from other users and posts from followed users.
+- Following section: (left of the home page) lists out all of the profiles you are following. (can hide)
+- Featured section: This section is displayed in the center which shows all the current trending recipes and all the newly created recipes from users that are being followed. (displayed as following: Recipe title, recipe image/short video, and (likes count and number of comments))
+<img width="1280" alt="feed_page" src="https://github.com/user-attachments/assets/3d1421e8-a702-4af3-a282-8f1888e2d6e7" />
+
+## Search Page:
+This page lets the user filter all recipes based on two fields of categories. These parameters are things like “breakfast”, “lunch”, “dinner”, “snacks”, “dessert”, “healthy”. Tags are the specifics about the recipe that can be searched for. (“vegan”, “gluten free”, “keto”, “kosher”, “vegetarian”, “lent”, “Christmas”, “thanksgiving”, “Hanukah”, etc.)
+<img width="1280" alt="search_recipes" src="https://github.com/user-attachments/assets/2d57822a-14da-4f56-ba4f-a72e4f4a57a2" />
+
+## Create Recipes:
+This page lets the user create a new recipe. The parameters to create a new recipe are as follows:
+- Recipe Title: The name of the recipe. (text)
+- Recipe Image upload: (plans for adding short video format) (image)
+- Optional oven temp setting: This will be a radial button saying, “Include oven temp and preheat?”. If user clicks on yes, a text box appears with the option to - add oven temp.
+- Serving size: How many servings the recipe makes.
+- Category options.
+- Tag options.
+- Ingredient list: List of ingredients for recipe.
+- Name of ingredient (text)
+- Quantity of ingredient (number)
+- Measurement of ingredient (text)
+- Recipe instructions: The step-by-step instructions on how to make the recipe. (text) (WIP)
+- Nutritional values calculator: (plan to add an automatic calculator based on ingredients added.) (WIP)
+<img width="1280" alt="create_new_recipe" src="https://github.com/user-attachments/assets/282686bf-e39e-4604-b620-f6578e1e7aee" />
+<img width="1280" alt="create_new_recipe_2" src="https://github.com/user-attachments/assets/e4618afd-fe2a-46e4-a48e-a705f7190069" />
+<img width="1280" alt="create_new_recipe_3" src="https://github.com/user-attachments/assets/77324575-0cd7-40d7-9016-de7890b2b38d" />
+
+## My Recipes:
+<img width="1280" alt="my_recipes" src="https://github.com/user-attachments/assets/eec44684-5556-4b50-ade9-3f6cb4aaa0be" />
+
+## Recipe Detail Page:
+<img width="1280" alt="recipe_detail" src="https://github.com/user-attachments/assets/4fd692ab-8c47-4264-be2a-2bf964d07686" />
+<img width="1280" alt="recipe_detail_2" src="https://github.com/user-attachments/assets/256b0eb6-d6b2-4f30-bbb5-0e5b9f97270a" />
+
